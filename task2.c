@@ -10,6 +10,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <errno.h>
+#include <math.h>
 
 #define LINE_SIZE 256
 
@@ -66,7 +67,7 @@ int get_temperature(double *value)
             errno = 0;
             *value = strtod(line, &end);
 
-            if (end != line && errno != ERANGE) {
+            if (end != line && errno != ERANGE && isfinite(*value)) {
                 /* Only trailing whitespace is allowed after the number */
                 while (isspace((unsigned char)*end)) {
                     end++;

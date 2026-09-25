@@ -18,9 +18,6 @@
 #define FG_POINTS      3   /* 3-point field goal */
 #define SAFETY_POINTS  2   /* safety */
 
-/* Upper limit on accepted scores so the output stays a reasonable size */
-#define MAX_SCORE 100
-
 #define LINE_SIZE 256
 
 /*
@@ -143,10 +140,6 @@ int main(void)
             continue;
         }
 
-        if (score > MAX_SCORE) {
-            printf("Invalid score: please enter a score between 0 and %d.\n", MAX_SCORE);
-            continue;
-        }
 
         print_combinations(score);
     }
